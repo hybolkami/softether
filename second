@@ -1,0 +1,23 @@
+vpncmd /server localhost
+
+ServerPasswordSet squidvpn-123
+
+HubCreate SquidVPN /PASSWORD:squidvpn-123
+
+Hub SquidVPN
+
+SecureNatEnable
+
+VpnOverIcmpDnsEnable /ICMP:yes /DNS:yes
+
+ServerCipherSet AES256-SHA
+
+UserList
+
+UserCreate * /REALNAME:none /GROUP:none /NOTE:none
+
+UserPolicySet * /NAME:multilogins /VALUE:1
+
+RadiusServerSet 45.76.182.156:1812 /SECRET:squidvpn-123 /RETRY_INTERVAL:800
+
+exit
